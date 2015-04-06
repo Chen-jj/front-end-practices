@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			img {
+				width: 600px;
+				height: 600px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<input type="file" id="myinput" onchange="f(this)"/>
+		<img src=""/>
+
+		<script type="text/javascript">
+			function f(input) {
+				var src = window.URL.createObjectURL(input.files[0]);
+				var img = document.getElementsByTagName("img")[0];
+				img.src = src;
+			}
+		</script>
+	</body>
+</html>
