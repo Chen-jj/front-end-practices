@@ -1,3 +1,6 @@
+/*
+ * in order to initialize digit with "," sperating each three numbers.
+ */
 function f(num) {
 	var str = new String(num);
 	var arr = str.split("");
