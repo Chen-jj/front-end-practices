@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<meta charset="utf-8" />
+
+    	<style>
+    		#box_1, #box_2, #box_3 {
+    			border-width: 30px;
+    			border-style: solid;
+    			border-color: red green yellow blue;
+    			width: 0px;
+    		}
+
+    		#box_1 {
+    			width: 50px;
+    		}
+
+    		#box_3 {
+    			border-color: transparent green transparent transparent; 
+    		}
+
+    		.bubble_text {
+    			overflow: hidden;
+    		}
+
+    		.bubble {
+    			border-width: 12px;
+    			border-style: solid;
+    			border-color: transparent #39bfa2 transparent transparent;
+    			width: 0;
+    			float: left;
+    			margin-top: 15px;
+    		}
+
+    		.bubble_cover {
+    			border-width: 14px;
+    			border-style: solid;
+    			border-color: transparent white transparent transparent;
+    			width: 0;
+    			float: left;
+    			margin-top: 13px;
+    			margin-left: -25px;
+    		}
+
+    		.text {
+    			border: 1px solid #39bfa2;
+    			border-radius: 8px;
+    			width: 250px;
+				word-break: break-all;
+				padding: 15px;
+    			margin-left: 24px;
+    		}
+    	</style>
+    </head>
+
+    <body>
+
+    	<h3>令一个盒子模型的边框变大到一定程度时，边框变成梯形状:</h3>
+    	<div id="box_1">hello world!</div>
+    	<h3>而当盒子的width变为0时，边框变成三角形:</h3>
+    	<div id="box_2"></div>
+    	<h3>把边框的另外3边的border-color变成transparent，则出现了我们想要的泡泡的尖状部分:</h3>
+    	<div id="box_3"></div>
+
+    	<h3>最终实现:</h3>
+    	<p>ps: 这里放弃了参考文章中的绝对定位方法，因为要设定一个信息框高度，这里改为用浮动去做。</p>
+    	<div class="bubble_text">
+    		<div class="bubble"></div>
+    		<div class="bubble_cover"></div>
+    		<div class="text">纯CSS气泡效果实现:参考廖雪峰的文章：http://www.liaoxuefeng.com/article/0013738937970388b6b6e5e5e2f4e21b65b01807c84ddf6000</div>
+    	</div>
+
+    </body>
+</html>
