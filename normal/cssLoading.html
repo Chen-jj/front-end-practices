@@ -1,3 +1,4 @@
+<!--only work on Chrome-->
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,6 +9,8 @@
 			height: 300px;
 			background-color: rgb(51,51,51);
 			border-radius: 5px;
+			float: left;
+  			margin: 50px;
 		}
 
 		.my-loading-position-center {
@@ -23,11 +26,62 @@
 			background-color: #ffffff;
 			position: absolute;
 			transform-origin: left 50% 0px;
+			opacity: 0.25;
+		}
+
+		@-webkit-keyframes lg {
+			from {
+				opacity: 1;
+			}
+
+			to {
+				opacity: 0.25;
+			}
 		}
 		</style>	
 	</head>
 
 	<body>
+		<!--5-->
+		<div class="my-loading">
+			<div class="my-loading-position-center">
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+			</div>
+		</div>
+
+		<!--7-->
+		<div class="my-loading">
+			<div class="my-loading-position-center">
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+			</div>
+		</div>
+
+		<!--9-->
+		<div class="my-loading">
+			<div class="my-loading-position-center">
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+			</div>
+		</div>
+
+		<!--11-->
 		<div class="my-loading">
 			<div class="my-loading-position-center">
 				<div class="my-loading-branch"></div>
@@ -43,27 +97,76 @@
 				<div class="my-loading-branch"></div>
 			</div>
 		</div>
+		
+		<!--13-->
+		<div class="my-loading">
+			<div class="my-loading-position-center">
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+			</div>
+		</div>
+
+		<!--15-->
+		<div class="my-loading">
+			<div class="my-loading-position-center">
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+				<div class="my-loading-branch"></div>
+			</div>
+		</div>
 	</body>
 	<script type="text/javascript">
-		function getElementsByClass(classname) {
+		//method: get elements by className;
+		function getElementsByClass(parentNode, classname) {
 			var result = [];
 
-			var doc_nodes = document.getElementsByTagName("*");
+			var doc_nodes = parentNode.getElementsByTagName("*");
 
-			var reg = new RegExp('\\b' + classname + '\\b');
+			//var reg = new RegExp('\\b' + classname + '\\b');
 
 			for (var i = 0, len = doc_nodes.length; i < len; i++) {
-				if (reg.test(doc_nodes[i].className)) {
+				/*if (reg.test(doc_nodes[i].className)) {
 					result.push(doc_nodes[i]);
+				}*/
+				var temp = doc_nodes[i].className.split(" ");
+				for (var j = 0; j < temp.length; j++) {
+					if (temp[j] == classname) {
+						result.push(doc_nodes[i]);
+						break;
+					}
 				}
 			}
 
 			return result;
 		}
 
-		function Loder() {
+		//class Loader
+		function Loder(parentNode) {
 			//attr
-			this.branchs = getElementsByClass("my-loading-branch");
+			this.branchs = getElementsByClass(parentNode, "my-loading-branch");
 			this.arg = 360 / this.branchs.length;
 
 			//method
@@ -71,6 +174,7 @@
 				Loder.prototype.setLoading = function() {
 					for (var i = 0, len = this.branchs.length; i < len; i++) {
 						this.branchs[i].style.transform = "rotate(" + this.arg * i +"deg) translate(30px, 0)";
+						this.branchs[i].style.webkitAnimation = "lg linear infinite 1s " + (1 / this.branchs.length * i) + "s";
 					}
 				}
 			}
@@ -78,7 +182,15 @@
 			Loder._initialized = true;
 		}
 
-		var loder = new Loder();
-		loder.setLoading();
+		(function() {
+			//find out how much loading module in this document
+			var my_loadings = getElementsByClass(document, "my-loading");
+
+			for (var i = 0, len = my_loadings.length; i < len; i++) {
+				var loder = new Loder(my_loadings[i]);
+				loder.setLoading();
+			}
+
+		})();
 	</script>
 </html>
