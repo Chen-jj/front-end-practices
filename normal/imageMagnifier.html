@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type="text/css">
+		body {
+			
+			margin: 0;
+		}
+
+		#test1 {
+			background-color: #333333;
+			width: 100%;
+			height: 450px;
+			padding-top: 100px;
+		}
+
+		#test2 {
+			background-color: #ffffff;
+			width: 100%;
+			height: 720px;
+			padding-top: 100px;
+			text-align: center;
+		}
+
+		#view {
+			width: 240px;
+			height: 350px;
+			margin: 0px auto;
+			background-image: url(../static/images/imgS.jpg);
+			border: 1px solid #ffffff;
+		}
+
+		#magnifier {
+			width: 100px;
+			height: 100px;
+			margin: -1px 0 0 -1px;
+			border: 1px solid #ffffff;
+			background-image: url(../static/images/imgB.jpg);
+			background-position: -33.333px -35.714px;
+		}
+
+		#product {
+			width: 620px;
+			height: 620px;
+			background-image: url(../static/images/MERCURIAL-S.jpg);
+			display: inline-block;
+		}
+
+		#mask {
+			width: 127px;
+			height: 207px;
+			border: 1px solid #ffffff;
+			background-color: rgba(255,255,255,0.5);
+			display: none;
+		}
+
+		#product_detail {
+			width: 380px;
+			height: 620px;
+			margin-left: 20px;
+			display: inline-block;
+		}
+		</style>
+	</head>
+
+	<body>
+		<div id="test1">
+			<div id="view">
+		    	<div id="magnifier"></div>
+			</div>
+		</div>
+		<div id="test2">
+			<div id="product">
+				<div id="mask">
+				</div>
+			</div>
+			<div id="product_detail">
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var view = document.getElementById("view");
+		var magnifier = document.getElementById("magnifier");
+		var product = document.getElementById("product");
+		var mask = document.getElementById("mask");
+		var pd = document.getElementById("product_detail");
+
+
+		//---------------------------test1---------------------------------------
+		function mouseMoveHandler(e) {
+
+			var x = e.clientX - view.offsetLeft;
+			var y = e.clientY - view.offsetTop;
+			
+			if (50 < x && x < 190) {
+				magnifier.style.marginLeft = x - 50 + "px";
+				magnifier.style.backgroundPositionX = -(x / 240 * 400 - 50) + "px";
+			} else if (x <= 50) {
+				magnifier.style.marginLeft = -1 + "px";
+				magnifier.style.backgroundPositionX = -(50 / 240 * 400 - 50) + "px";
+			} else if (x >= 190) {
+				magnifier.style.marginLeft = 139 + "px";
+				magnifier.style.backgroundPositionX = -(190 / 240 * 400 - 50) + "px";
+			}
+
+			if (50 < y && y < 300) {
+				magnifier.style.marginTop = y - 50 + "px";
+				magnifier.style.backgroundPositionY = -(y / 350 * 600 - 50) + "px";
+			} else if (y <= 50) {
+				magnifier.style.marginTop = -1 + "px";
+				magnifier.style.backgroundPositionY = -(50 / 350 * 600 - 50) + "px";
+			} else if (y >= 300) {
+				magnifier.style.marginTop = 249 + "px";
+				magnifier.style.backgroundPositionY = -(300 / 350 * 600 - 50) + "px";
+			}
+		}
+
+		view.addEventListener("mousemove", mouseMoveHandler);
+
+		//---------------------------test2---------------------------------------
+		function mouseMoveHandler2(e) {
+			var x = e.pageX - product.offsetLeft;
+			var y = e.pageY - product.offsetTop;
+
+			if (63 <= x && x <= 557) {
+				mask.style.marginLeft = x - 63 + "px";
+				pd.style.backgroundPositionX = -(x / 620 * 1860 - 190) + "px";
+			}
+
+			if (103 <= y && y <= 517) {
+				mask.style.marginTop  = y - 103 + "px";
+				pd.style.backgroundPositionY = -(y / 620 * 1860 - 310) + "px";
+			}
+		}
+
+		function mouseOverHandler() {
+			pd.style.backgroundImage = "url(../static/images/MERCURIAL-B.jpg)";
+			mask.style.display = "block";
+		}
+
+		function mouseOutHandler() {
+			pd.style.backgroundImage = "initial";
+			mask.style.display = "none";
+		}
+
+		product.addEventListener("mouseover", mouseOverHandler);
+		product.addEventListener("mouseout", mouseOutHandler);
+		product.addEventListener("mousemove", mouseMoveHandler2);
+    </script>
+</html>
