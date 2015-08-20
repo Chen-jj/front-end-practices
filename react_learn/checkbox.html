@@ -1,0 +1,89 @@
+<!Doctype html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+  	<style>
+  		.active {
+  			background-color: red;
+  		}
+  		.negative {
+  			background-color: white;
+  		}
+  		span.checkbox {
+  			display: inline-block;
+  			width: 100px;
+  			height: 100px;
+  			border: 1px solid red;
+  		}
+  	</style>
+  </head>
+
+  <body>
+  	<div id="container"></div>
+  </body>
+  <script src="./build/react.min.js"></script>
+  <script src="./build/JSXTransformer.js"></script>
+  <script type="text/jsx">
+  
+ 	var Checkbox = React.createClass({
+ 		getDefaultProps: function() {
+ 			return {
+ 				defaultChecked: false,
+ 				onChange: function(){}
+ 			}
+ 		},
+ 		getInitialState: function() {
+ 			var state = {};
+
+ 			'checked' in this.props ? state._state = this.props.checked : state._state = this.props.defaultChecked
+
+ 			return state;
+ 		},
+ 		toggle: function() {
+ 			if (!("checked" in this.props)) {
+	 			this.setState({
+	 				_state: !this.state._state
+	 			});
+	 		}
+	 		this.props.onChange()
+ 		},
+  		componentWillReceiveProps: function(newProps){
+			if('checked' in newProps){
+			  this.setState({
+			    _state: newProps.checked
+			  });
+			}
+		},
+ 		render: function() {
+ 			var state;
+ 			this.state._state ? state = "active" : state = "negative";
+ 			return (
+ 				<span className={"checkbox " + state} onClick={this.toggle}></span>
+ 			);
+ 		}
+ 	});
+
+  	var MyCheckboxs = React.createClass({
+  		getInitialState: function() {
+  			return {
+  				checked: false
+  			}
+  		},
+  		onChange: function() {
+  			this.setState({
+  				checked: !this.state.checked
+  			})
+  		},
+  		render: function() {
+  			return (
+  				<div>
+  					<p>受限：<Checkbox checked={this.state.checked} /></p>
+  					<p>不受限：<Checkbox defaultChecked={true} onChange={this.onChange}/></p>
+  				</div>
+  			);
+  		}
+  	});
+
+	React.render(<MyCheckboxs />, document.getElementById('container'));
+  </script>
+</html>

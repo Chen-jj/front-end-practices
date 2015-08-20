@@ -1,0 +1,44 @@
+<!Doctype html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+  </head>
+
+  <body>
+  	<div id="l1"></div>
+  	<div id="l2"></div>
+  	<div id="container"></div>
+  </body>
+  <script src="./build/react.min.js"></script>
+  <script src="./build/JSXTransformer.js"></script>
+  <script type="text/jsx">
+  
+	var HelloMessage = React.createClass({
+		render: function() {
+			return <div>Hello {this.props.name}</div>;
+		}
+	});
+	React.render(<HelloMessage name="world"/>, document.getElementById('l1'));
+
+	var Timer = React.createClass({
+		getInitialState: function() {
+			return {t: 0};
+		},
+		tick: function() {
+			this.setState({t: this.state.t + 1});
+		},
+		componentDidMount: function() {
+			this.interval = setInterval(this.tick, 1000);
+		},
+		componentWillUnmount: function() {
+			clearInterval(this.interval);
+		},
+		render: function() {
+			return (<div>Second: {this.state.t}</div>);
+		}
+	});
+
+	React.render(<Timer />, document.getElementById('l2'))
+
+  </script>
+</html>
