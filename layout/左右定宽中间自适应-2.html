@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			section {
+				color: white;
+				min-width: 600px;
+			}
+			header, footer  {
+				background-color: #666;
+				width: 100%;
+				height: 50px;
+				margin-bottom: 10px;
+			}
+			aside#left {
+				background-color: #666;
+				/*
+				   可用绝对定位代替浮动
+				   position: absolute;
+					left: 0;
+					top: 60px;
+				*/
+				float: left;
+				width: 250px;
+				height: 500px;
+			}
+			article {
+				background-color: #666;
+				height: 500px;
+    			margin: 0 260px;
+			}
+			aside#right {
+				/*
+				   可用绝对定位代替浮动
+				   position: absolute;
+				   right: 0;
+				   top: 60px;
+				*/
+				float: right;
+				background-color: #666;
+				width: 250px;
+				height: 500px;
+			}
+			footer {
+				margin: 10px 0 0;
+			}
+		</style>
+	</head>
+	<body>
+		<section>
+			<header>我是页头</header>
+			<aside id="left">我是左侧栏</aside>
+			<aside id="right">我是右侧栏</aside>
+			<article>我是内容</article>
+			<footer>我是页脚</footer>
+		</section>
+	</body>
+</html>
