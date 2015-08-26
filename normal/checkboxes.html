@@ -1,0 +1,213 @@
+<!Doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+
+		<style>
+			.un-visible {
+				visibility: hidden;
+			}
+
+			/*类型1*/
+			#type-1-container {
+				position: relative;
+			    display: inline-block;
+			    width: 45px;
+			    height: 10px;
+			    background-color: #000;
+			    border-radius: 8px;
+			}
+			#type-1-container label {
+				position: absolute;
+			    left: 0;
+			    top: -3px;
+			    background-color: #dcd;
+			    width: 15px;
+			    height: 15px;
+			    border-radius: 50%;
+			    transition: left 0.5s ease;
+			}
+			#type-1-container input:checked + label {
+				left: 30px;
+			}
+
+			/*类型2*/
+			#type-2-container {
+				position: relative;
+			    display: inline-block;
+			    width: 115px;
+			    height: 40px;
+			    background-color: #333;
+			    border-radius: 20px;
+			}
+			#type-2-container:before {
+				position: absolute;
+			    top: 18px;
+			    left: 20px;
+			    width: 75px;
+			    content: "";
+			    border: 1px solid #111;
+			}
+			#type-2-container label {
+				cursor: pointer;
+			    position: absolute;
+			    left: 13px;
+			    top: 10px;
+			    background-color: #dcd;
+			    width: 20px;
+			    height: 20px;
+			    border-radius: 50%;
+			    transition: left 0.5s ease;
+			}
+			#type-2-container input:checked + label {
+				left: 84px;
+				background-color: #26ca28;
+			}
+
+			/*类型3*/
+			#type-3-container {
+			    position: relative;
+			    display: inline-block;
+			    width: 125px;
+			    height: 40px;
+			    background-color: #333;
+			    border-radius: 20px;
+			    font-size: 14px;
+			}
+			#type-3-container:before {
+				position: absolute;
+			    color: #26ca28;
+			    top: 13px;
+			    left: 14px;
+			    content: "Open";
+			}
+			#type-3-container:after {
+				position: absolute;
+			    color: #fff;
+			    top: 14px;
+			    right: 17px;
+			    content: "Off";
+			}
+			#type-3-container label {
+				cursor: pointer;
+			    position: absolute;
+			    left: 15px;
+			    top: 10px;
+			    background-color: #dcd;
+			    width: 55px;
+			    height: 20px;
+			    border-radius: 15px;
+			    transition: left 0.5s ease;
+			    z-index: 999;
+			}
+			#type-3-container input:checked + label {
+				left: 56px;
+				background-color: #26ca28;
+			}
+
+			/*类型4*/
+			#type-4-container {
+			    position: relative;
+			    width: 40px;
+			    height: 40px;
+			    background-color: #dcd;
+			    border-radius: 50%;
+			}
+			#type-4-container label {
+				cursor: pointer;
+			    position: absolute;
+			    left: 7px;
+			    top: 7px;
+			    background-color: #333;
+			    width: 26px;
+			    height: 26px;
+			    border-radius: 15px;
+			    transition: background-color 0.2s ease;
+			}
+			#type-4-container input:checked + label {
+				background-color: #26ca28;
+			}
+
+			/*类型5*/
+			#type-5-container {
+			    position: relative;
+			    width: 25px;
+			    height: 25px;
+			    background-color: #dcd;
+			}
+			#type-5-container label {
+			    cursor: pointer;
+			    width: 25px;
+			    height: 25px;
+			    position: absolute;
+			    left: 0px;
+			    top: 0px;
+			}
+			#type-5-container label:after {
+			    content: "";
+			    display: block;
+			    width: 10px;
+			    height: 6px;
+			    position: absolute;
+			    top: 6px;
+			    left: 6px;
+			    border-left: 3px solid #000;
+			    border-bottom: 3px solid #000;
+			    transform: rotate(-45deg);
+			    transition: opacity 0.1s ease;
+			}
+			#type-5-container input:checked + label:after {
+				opacity: 0.3;
+			}
+
+		</style>
+	</head>
+	<body>
+		<section>
+			<h1>normal checkbox</h1>
+			<input type="checkbox" id="normal-checkbox" checked/>
+			<label for="normal-checkbox">是否选中</label>
+		</section>
+
+		<section>
+			<h1>checkbox Type-1</h1>
+			<div id="type-1-container">
+				<input type="checkbox" id="type-1-checkbox" class="un-visible">
+				<label for="type-1-checkbox" ></label>
+			</div>
+		</section>
+
+		<section>
+			<h1>checkbox Type-2</h1>
+			<div id="type-2-container">
+				<input type="checkbox" id="type-2-checkbox" class="un-visible">
+				<label for="type-2-checkbox" ></label>
+			</div>
+		</section>
+
+		<section>
+			<h1>checkbox Type-3</h1>
+			<div id="type-3-container">
+				<input type="checkbox" id="type-3-checkbox" class="un-visible">
+				<label for="type-3-checkbox" ></label>
+			</div>
+		</section>
+
+		<section>
+			<h1>checkbox Type-4</h1>
+			<div id="type-4-container">
+				<input type="checkbox" id="type-4-checkbox" class="un-visible">
+				<label for="type-4-checkbox" ></label>
+			</div>
+		</section>
+
+		<section>
+			<h1>checkbox Type-5</h1>
+			<div id="type-5-container">
+				<input type="checkbox" id="type-5-checkbox" class="un-visible">
+				<label for="type-5-checkbox" ></label>
+			</div>
+		</section>
+
+	</body>
+</html>
