@@ -1,0 +1,150 @@
+<!Doctype html>
+<html>
+	<head>
+		<style>
+			section#stage {
+				width: 800px;
+				height: 500px;
+				margin: 50px auto;
+				background-color: #dcdddd;
+				position: relative;
+				perspective: 800px;
+				border-radius: 10px;
+			}
+			#container {
+				width: 200px;
+			    height: 120px;
+			    position: absolute;
+			    left: 50%;
+			    top: 50%;
+			    margin-left: -100px;
+			    margin-top: -60px;
+			    transform: rotateY(0deg);
+			    transform-style: preserve-3d;
+			    transition: transform 0.5s ease;
+			}
+			img {
+				position: absolute;
+				bottom: 0;
+			}
+			#i1 {
+				transform: rotateY(0deg) translateZ(304px);
+			}
+			#i2 {
+				transform: rotateY(40deg) translateZ(304px);
+			}
+			#i3 {
+				transform: rotateY(80deg) translateZ(304px);
+			}
+			#i4 {
+				transform: rotateY(120deg) translateZ(304px);
+			}
+			#i5 {
+				transform: rotateY(160deg) translateZ(304px);
+			}
+			#i6 {
+				transform: rotateY(200deg) translateZ(304px);
+			}
+			#i7 {
+				transform: rotateY(240deg) translateZ(304px);
+			}
+			#i8 {
+				transform: rotateY(280deg) translateZ(304px);
+			}
+			#i9 {
+				transform: rotateY(320deg) translateZ(304px);
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<section id="stage">
+			<div id="container">
+				<img id="i1" src="../static/images/poster_1.jpg" width="200px" />
+				<img id="i2" src="../static/images/poster_2.jpg" width="200px" />
+				<img id="i3" src="../static/images/poster_3.jpg" width="200px" />
+				<img id="i4" src="../static/images/poster_4.jpg" width="200px" />
+				<img id="i5" src="../static/images/poster_5.jpg" width="200px" />
+				<img id="i6" src="../static/images/poster_6.jpg" width="200px" />
+				<img id="i7" src="../static/images/poster_7.jpg" width="200px" />
+				<img id="i8" src="../static/images/poster_8.jpg" width="200px" />
+				<img id="i9" src="../static/images/poster_9.jpg" width="200px" />
+			</div>
+		</section>
+
+		<script type="text/javascript">
+			(function(window) {
+				var RotateCtrl = function() {
+					RotateCtrl.prototype.init.call(this);
+				}
+
+				RotateCtrl.prototype = {
+					constructor: RotateCtrl,
+					init: function() {
+						this.container = $("container");
+						this.angle = 0;
+						this.current = 1;
+
+						//记录bind后得到的匿名函数以便解除事件
+						this.left = $("i9");
+						this.right = $("i2");
+						this.fnL = this.moveLeft.bind(this);
+						this.fnR = this.moveRight.bind(this);
+
+						this.left.addEventListener('click', this.fnL);
+						this.right.addEventListener('click', this.fnR);
+					},
+					moveLeft: function() {
+						this.left.removeEventListener('click', this.fnL);
+						this.right.removeEventListener('click', this.fnR);
+
+						this.angle += 40;
+						this.container.style.transform = "rotateY(" + this.angle + "deg)";
+
+						this.current = (this.current - 1 <= 0) ? 9 : (this.current - 1);
+
+						var tempLeft = (this.current - 1 <= 0) ? 9 : (this.current - 1);
+						this.left = $("i" + tempLeft);
+						this.fnL = this.moveLeft.bind(this);
+						this.left.addEventListener('click', this.fnL);
+
+						var tempRight = (this.current + 1 >= 10) ? 1 :(this.current + 1);
+						this.right = $("i" + tempRight);
+						this.fnR = this.moveRight.bind(this);
+						this.right.addEventListener('click', this.fnR);
+
+					},
+					moveRight: function() {
+						this.left.removeEventListener('click', this.fnL);
+						this.right.removeEventListener('click', this.fnR);
+
+						this.angle -= 40;
+						this.container.style.transform = "rotateY(" + this.angle + "deg)";
+
+						this.current = (this.current + 1 >= 10) ? 1 : (this.current + 1);
+
+						var tempLeft = (this.current - 1 <= 0) ? 9 : (this.current - 1);
+						this.left = $("i" + tempLeft);
+						this.fnL = this.moveLeft.bind(this);
+						this.left.addEventListener('click', this.fnL);
+
+						var tempRight = (this.current + 1 >= 10) ? 1 :(this.current + 1);
+						this.right = $("i" + tempRight);
+						this.fnR = this.moveRight.bind(this);
+						this.right.addEventListener('click', this.fnR);
+					}
+				}
+
+				function $(id) {
+					return (typeof id === 'string') ? window.document.getElementById(id) : id;
+				}
+
+				window.RotateCtrl = RotateCtrl;
+			})(window, undefined)
+
+			var rotateCtrl = new RotateCtrl();
+
+		</script>
+	</body>
+</html>
