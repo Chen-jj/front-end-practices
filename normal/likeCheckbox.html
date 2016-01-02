@@ -1,0 +1,46 @@
+<!--Twitter Like button-->
+<!--
+	主要利用animation-timing-function的steps属性，
+	参考资料：http://www.tuicool.com/articles/neqMVr
+-->
+<!Doctype html>
+<html>
+<head>
+	<style>
+		header {
+			font-size: 2em;
+			text-align: center;
+		}
+		section {
+			text-align: center;
+			margin-top: 100px;
+		}
+		#like {
+			visibility: hidden;
+		}
+		#logo {
+		    display: inline-block;
+		    width: 100px;
+		    height: 100px;
+			background: url("http://abs.twimg.com/a/1446862637/img/t1/web_heart_animation.png") no-repeat 0 0;
+		}
+		#like:checked + #logo{
+			animation: click 0.8s steps(28);
+			animation-fill-mode: forwards;
+		}
+		@keyframes click {
+			100% {
+				background-position: right;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<header>Twitter Like button</header>
+	<section>
+		<input id="like" type="checkbox" />
+		<label id="logo" for="like"></label>
+	</section>
+</body>
+</html>

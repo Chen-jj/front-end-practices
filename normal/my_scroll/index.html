@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title></title>
+    <style type="text/css">
+        * { margin:0; padding:0;}
+        body {font-size:12px; line-height:1.5;}
+        #scrollTest {background:#fff;padding:10px;width:1000px;}
+        .sky_warpper { margin:100px auto;background:red;}
+        .sky_scrollTopOuter {width:7px;background:#ddd;opacity:0.3;}
+        .sky_scrollTopOuter:hover {opacity:0.8;width:7px;-webkit-transition:opacity,width 0.3s ease-out;}
+        .sky_scrollTop { background:#333;opacity:0.3;width:7px;-webkit-border-radius:5px;-webkit-transition:opacity,width 0.3s ease-out; cursor:default;}
+        .sky_warpper:hover .sky_scrollTop { opacity:0.8;width:7px;-webkit-transition:opacity,width 0.3s ease-out;}
+         
+        .sky_scrollLeftOuter {height:7px;background:#ddd;opacity:0.3;}
+        .sky_scrollLeftOuter:hover {opacity:0.8;height:7px;-webkit-transition:opacity,height 0.3s ease-out;}
+        .sky_scrollLeft { background:#333;opacity:0.3;height:7px;-webkit-border-radius:5px;-webkit-transition:opacity,height 0.3s ease-out; cursor:default;}
+        .sky_warpper:hover .sky_scrollLeft { opacity:0.8;height:7px;-webkit-transition:opacity,height 0.3s ease-out;}
+    </style>
+</head>
+<body>
+    <input type="button" id="addSt" value="添加竖向滚动条" />
+    <input type="button" id="addSl" value="添加横向滚动条" />
+    <input type="button" id="delSt" value="删除竖向滚动条" />
+    <input type="button" id="delSl" value="删除横向滚动条" />
+    <input type="button" id="add" value="增加内容" />
+    <input type="button" id="setTop" value="设置上边距离" />
+    <input type="button" id="setLeft" value="设置左边距离" />
+    <div id="scrollTest">
+        111111111111111111111111111111译者按 IE 曾是 web 创新的先驱，但最近几年因为对 web 标准的支持落后于其他浏览器以及低版本 IE 的各种 bug 而被人诟病。雅虎的 Nicholas C. Zakas 带我们回顾了 IE 在 web 发展过程中扮演的辉煌角色，让我们能以一个更客观的眼光来看待 IE。看完这篇文章，也许大家都会对 IE 浏览器有一定的改观，这也是我翻译这篇文章的目的。
+ 
+译文
+ 
+在 Internet Explorer 成为大家都恨之入骨的浏览器的很久以前，它曾是整个互联网的创新驱动力。有时候我们很难记得那些在 IE 6 成为全世界 web 开发者的灾难之前 IE 所作的贡献。不管你信不信，正因为有了 IE 4—6，才会有我们现在所知的 web 开发。IE 的一些独特的功能过去就曾是事实标准，后来成为了官方标准最终进入了 HTML5 规范。人们也许很难相信，对于我们现在认为理所应当的功能中有很大一部分都应该要想到 IE，但快速地回顾一下历史可以让我们知道的确如此。
+ 
+DOM
+ 
+如 果 IE 是一个人人都痛恨的浏览器，那么「文档对象模型」（DOM）就是人人都痛恨的 API 了。你可以说 DOM 过于繁琐、不适合 JavaScript 甚至是有些荒谬，而且这些也都没错。然而，DOM 还是给了开发者通过 JavaScript 来访问网页的每个部分的途径。曾经你一度只能通过 JavaScript 访问页面中某些特定的元素。IE 3 和 Netscape 3 只允许程序访问表单元素、图片以及链接。Netscape 4 改进了这一点，把程序可访问的范围通过 document.layers 扩展到了它特有的 layer 元素。IE 4 作了进一步改进，把这个范围通过 document.all 扩展到了页面的所有元素。
+ 
+从很多方面来说，document.all 算是 document.getElementById() 的最初版本。你还是要使用元素的 ID 来通过 document.all 访问它，例如 document.all.myDiv 或是 document.all["myDiv"]。最主要的区别就是 IE 使用了一个集合而非方法，而这和其他当时的访问方法比如 document.images 及 document.forms 是相吻合的。
+ 
+IE 4 也第一个引入了用 document.all.tags() 来通过标签名字获取一个元素列表的功能。无论从哪点来看，这都是 document.getElementsByTagName() 的最初版本，而且工作方式完全相同。如果你想获取所有的 div 元素，你可以使用 document.all.tags("div")。甚至在 IE 9 中，这个方法仍然作为 document.getElementsByTagName() 的一个别名存在。
+ 
+IE 4 同时也为我们引入了可能是有史以来最流行的私有 DOM 扩展：innerHTML。看起来微软的那帮人是认识到了通过编程手段来建立一个 DOM 有多么痛苦，所以把这个便捷方法，连同 outerHTML 一起提供给我们。事实证明这两个方法都非常有用，已经在 HTML5 中被标准化了[1]。随它们一同而来的用来处理纯文本的 API——innerText 以及 outerText——同样被证明足够有影响力，因为 DOM Level 3 已经引入了与 innerText 行为相似的 textContent[2]。
+ 
+按照同样的思路，IE 4 引入了 insertAdjacentHTML()，这是又一种将 HTML 插入文档中的方法。虽然这花了更长的时间，但最终也被编入了 HTML5[3]，而且目前已被各浏览器广泛支持。
+ 
+事件
+ 
+在开始时，JavaScript 并没有事件机制。网景和微软都作出了尝试，并且分别得出了不同的模型。网景给我们带来了事件捕获，其思想是一个事件先发送到窗口，然后是文档，然后一个个直到最终到达预期的目标。网景浏览器 6 以前的版本都仅支持事件捕获。
+ 
+微 软采取了一个相反的方法，设计出了事件冒泡。他们认为一个事件应该先从实际的目标出发，然后在上层节点触发直到文档。IE 9 以前的浏览器仅支持事件冒泡。虽然随着官方的 DOM 事件规范发展，同时包含了事件捕获和事件冒泡，但大多数 web 开发者都只使用事件冒泡，而把事件捕获仅仅留在 JavaScript 类库中的一些解决方案和小技巧中使用。
+ 
+除了创造了事件冒泡以外，微软还创造了一系列后来也最终被标准化的额外事件：
+ 
+contextmenu – 当使用鼠标副按键点击一个元素时触发。在 IE 5 中首次出现，后来被编入了 HTML5[4]。现在已被所有主流浏览器所支持。
+beforeunload – 在 unload 事件前触发，允许你阻断页面的退出。最初由 IE 4 引入，现在也为 HTML5 的一部分[4]。
+mousewheel – 在鼠标滚轮（或类似设备）被使用时触发。首个支持此事件的浏览器是 IE 6。就像其他一样，目前也是 HTML5 的一部分[4]。唯一不支持此事件的主流桌面浏览器是 Firefox（但其支持一个可用来替代的 DOMMouseScroll 事件）。
+mouseenter – mouseover 的非冒泡版本，被微软在 IE 5 中引入，用来克服 mouseover 使用时带来的困扰。这个事件已被 DOM Level 3 事件规范正规化[5]。同样被 Firefox 及 Opera 支持，但 Safari 和 Chrome 都（暂时？）不支持。
+mouseleave – 与 mouseenter 对应的 mouseout 的非冒泡版本。在 IE 5 中被引入，目前被 DOM Level 3 事件规范标准化[6]。浏览器支持和 mouseenter 一样。
+focusin – focus 事件的冒泡版本，用来帮助更好地管理页面上的聚焦行为。最初在 IE 6 中被引入，现在已成为 DOM Level 3 事件规范的一部分[7]。目前没有被很好地支持，尽管 Firefox 关于其实现的开过一个 bug。
+focusout – blur 事件的冒泡版本，用来帮助更好地管理页面上的聚焦行为。最初在 IE 6 中被引入，现在已成为 DOM Level 3 事件规范的一部分[8]。和 focusin 一样，没有良好支持但 Firefox 接近了。
+XML 与 Ajax
+尽 管 XML 已经像很多人所料的那样在现今的 web 上被大量使用，但是对 XML 进行支持的领路人仍然是 IE。它是第一个支持在客户端通过 JavaScript 进行 XML 解析以及 XSLT 变换的浏览器。不幸的是，它是通过 ActiveX 对象来表示 XML 文档以及 XSLT 处理器的。但 Mozilla 的人显然认识到了其中的可取之处，因为他们后来用 DOMParser、XMLSerializer 和 XSLTProcessor 创造了类似的功能。其中前两个已经成为了 HTML5 的一部分[9]。虽然基于标准的 JavaScript XML 处理方式和 IE 提供的版本差异较大，但它无疑是深受 IE 影响的。
+ 
+客户端的 XML 处理都都是 IE 对 XMLHttpRequest 的实现的一部分，最开始由 IE 5 以 ActiveX 对象的形式引入。其中的想法是希望可以在一个网页中从服务器获取一个 XML 文档并且允许用 JavaScript 把这个 XML 当做 DOM 来进行处理。IE 的版本需要你使用 new ActiveXObject("MSXML2.XMLHttp")，这也使得它依赖于版本字符串，而且让开发者要费尽功夫去测试、使用最新版本。再一次，Firefox 站出来，通过创建一个当时还是私有的、与 IE 版本接口完全同名的 XMLHttpRequest 对象来清理这一片混乱。此后其他浏览器复制了 Firefox 的实现，最终使得 IE 7 也增加了一个不需要使用 ActiveX 的版本。当然，使得每个人为 JavaScript 感到振奋的 Ajax 革命背后的驱动力正是 XMLHttpRequest。<br/><br/>
+    </div>
+    <script src="ctrl.js"></script>
+    <script>
+        var a = skyScroll({
+            target:'scrollTest'
+        });
+        var add = document.getElementById('add');
+        var scrollTest = document.getElementById('scrollTest');
+        var setTop = document.getElementById('setTop');
+        var setLeft = document.getElementById('setLeft');
+        var addSt = document.getElementById('addSt');
+        var addSl = document.getElementById('addSl');
+        var delSt = document.getElementById('delSt');
+        var delSl = document.getElementById('delSl');
+        add.onclick = function(){
+            var w = scrollTest.offsetWidth;
+            scrollTest.innerHTML += scrollTest.innerHTML;
+            a.recalculated();
+        };
+        setTop.onclick = function(){
+            a.set({top:200});
+        }
+        setLeft.onclick = function(){
+            a.set({left:300});
+        }
+        addSt.onclick = function(){
+            a.addVscroll();
+        };
+        addSl.onclick = function(){
+            a.addLscroll();
+        };
+        delSt.onclick = function(){
+            a.delVscroll();
+        }
+        delSl.onclick = function(){
+            a.delLscroll();
+        }
+    </script>
+</body>
+</html>
