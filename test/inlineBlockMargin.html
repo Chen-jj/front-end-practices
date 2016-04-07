@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>title</title>
+	
+	<style type='text/css'>
+		span {
+			color: #fff;
+		}
+		.wrap {
+			font-size: 0;
+			width: 600px;
+			background-color: #666;
+			margin-bottom: 50px;
+		}
+		.ib {
+			display: inline-block;
+			margin: 50px;
+			width: 100px;
+			background-color: blue;
+			font-size: 36px;
+		}
+		.i {
+			font-size: 36px;
+			margin: 0 30px;
+		}
+	</style>
+</head>
+<body>
+	<!-- inline-block 上下左右的margin都不会层叠 -->
+	<div class="wrap">
+		<span class="ib">1</span>
+		<span class="ib">2</span>
+		<span class="ib">3</span>
+		<span class="ib">4</span>
+		<span class="ib">5</span>
+		<span class="ib">6</span>
+	</div>
+
+	<!-- inline 设置上margin固然没效，左右margin也不会层叠 -->
+	<div class="wrap">
+		<span class="i">1</span>
+		<span class="i">2</span>
+		<span class="i">3</span>
+		<span class="i">4</span>
+		<span class="i">5</span>
+		<span class="i">6</span>
+	</div>
+</body>
+</html>
