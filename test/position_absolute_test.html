@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>title</title>
+
+	<style>
+	  .wrap {
+	  	position: relative;
+	  	width: 500px;
+	  	height: 500px;
+	  	margin: 50px auto;
+	  	background-color: #333;
+	  }
+	  .c1 {
+		position: absolute;
+		width: 100px;
+		height: 100px;
+		background-color: blue;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		padding: 50px 0 0 0;
+		margin: 0 0 0 50px;
+	  }
+	  .box {
+		width: 300px;
+		height: 300px;
+		margin: 0 auto;
+		background-color: #999;
+	  }
+	  .c2 {
+	  	position: absolute;
+	  	left: 0;
+	  	width: 100px;
+	  	height: 100px;
+	  	background-color: red;
+	  }
+	  .c3 {
+	  	position: absolute;
+	  	width: 100px;
+	  	height: 100px;
+	  	background-color: green;
+	  }
+	  .c3 {
+	  	position: absolute;
+	  	width: 100px;
+	  	height: 100px;
+	  	background-color: green;
+	  }
+	  .c4 {
+	  	width: 100px;
+	  	height: 100px;
+	  	background-color: #fff;
+	  }
+	  .c5 {
+	  	position: absolute;
+	  	width: 200px;
+	  	height: 200px;
+	  	background-color: yellow;
+	  }
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<!-- 绝对定位以算上margin作边界，没有margin则算padding -->
+		<!-- 绝对定位元素没有写宽度时，left：0；right：0；可令绝对定位元素占满包含块的宽度（高度同理） -->
+		<div class="c1"></div>
+
+		<!-- 绝对定位，不写left，top时，会脱离文件流（c4被遮盖可看出），但定位可以看作从当前文本流中飘了起来（c5在c4下可看出） -->
+		<div class="box">
+			<div class="c2"></div>
+			<div class="c3"></div>
+			<div class="c4"></div>
+			<div class="c5"></div>
+		</div>
+	</div>
+</body>
+</html>
