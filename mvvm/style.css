@@ -1,0 +1,11 @@
+.bg-red {
+	background-color: red;
+}
+
+.square100px {
+	display: block;
+	width: 100px;
+	height: 100px;
+	margin: 15px;
+	margin-left: 0px;
+}

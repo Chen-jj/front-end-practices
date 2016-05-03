@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>My mvvm</title>
+	<script type="text/javascript" src="jQuery.js"></script>
+	<script type="text/javascript" src="arsenal.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div ar-controller="main">
+		<div class="bg-red square100px" ar-css-width="w" ar-click="enlarge"></div>
+		<div>{{w}}</div>
+	</div>
+
+	<script>
+		Arsenal.define("main", function(vm) {
+			vm.w = 150;
+			vm.click = function() {
+				vm.w += 50;
+			}
+		})
+</script>
+</body>
+</html>
