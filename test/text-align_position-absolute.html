@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>title</title>
+	
+	<style type='text/css'>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #e8e8ed;
+		}
+		a, a:visited {
+			text-decoration:none;
+			color:#333;
+		}
+		.detail_cmd_tab {
+		    position: relative;
+		    height: 40px;
+		    text-align: center;
+		    background: #fff;
+		    font-size: 14px;
+		    color: #333;
+		}
+		.detail_cmd_tab .tab_item {
+	        position: absolute;
+	        height: 40px;
+	        line-height: 40px;
+	        padding: 0 20px;
+	        /*left: 50%;*/
+	    }
+	    /*只有两个tab的情况*/
+        .tab_item:nth-child(1) {
+            transform: translateX(-100%);
+            -webkit-transform: translateX(-100%);
+        }
+        .tab_item:nth-child(2) {
+            transform: translateX(0%);
+            -webkit-transform: translateX(0%);
+
+        }
+        .tab_item.cur {
+            color: #e4393c;
+        }
+
+        .tab_item.cur:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left:50%;
+            transform: translate(-50%,0);
+            -webkit-transform: translate(-50%,0);
+            width: 55px;
+            height: 2px;
+            background: #e4393c;
+        }
+	</style>
+</head>
+<body>
+    <div class="detail_cmd">
+        <div class="detail_cmd_tab">
+            <a href="#" class="tab_item cur">搭配推荐</a>
+            <a href="#" class="tab_item">猜你喜欢</a>
+        </div>
+    </div>
+</body>
+</html>

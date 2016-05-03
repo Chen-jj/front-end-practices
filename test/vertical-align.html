@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>vertiacl-align</title>
+	
+	<style type='text/css'>
+		body {
+			background-color: #e8e8ed;
+			padding: 100px;
+		}
+		p {
+			background-color: #999;
+			border: 4px solid green;
+			padding: 0 20px;
+		}
+		.f24 {
+			font-size: 24px;
+			line-height: 120px;
+		}
+		.f36 {
+			font-size: 36px;
+			color: red;
+		}
+		/*top,bottom*/
+		.top {
+			padding: 10px;
+			background-color: blue;
+			border: 2px dotted red;
+			vertical-align: top;
+		}
+		.i_top {
+			vertical-align: top;
+		}
+		.bottom {
+			padding: 10px;
+			background-color: blue;
+			border: 2px dotted red;
+			vertical-align: bottom;
+		}
+		.i_bottom {
+			vertical-align: bottom;
+		}
+		/*text-top,text-bottom*/
+		.texttop {
+			padding: 10px;
+			background-color: blue;
+			border: 2px dotted red;
+			vertical-align: text-top;
+		}
+		.i_texttop {
+			vertical-align: text-top;
+		}
+		.textbottom {
+			padding: 10px;
+			background-color: blue;
+			border: 2px dotted red;
+			vertical-align: text-bottom;
+		}
+		.i_textbottom {
+			vertical-align: text-bottom;
+		}
+		/*middle*/
+		.i_middle {
+			vertical-align: middle;
+		}
+	</style>
+</head>
+<body>
+	<p>
+		<span class="f24">默认对齐方式</span>
+		<span class="f36">基线对齐</span>
+		<img src="../static/images/mclaren.png">
+	</p>
+
+	<div>行内非替换元素：行内框。行内替换元素：顶部底部。</div>	
+	<p>
+		<span class="f24">对齐方式</span>
+		<span class="f36 top">top</span>
+		<img class="i_top" src="../static/images/mclaren.png">
+		<span class="f36 bottom">bottom</span>
+		<img class="i_bottom" src="../static/images/mclaren.png">
+	</p>
+
+	<div>'text-top'
+align the top of the element with the top of the parent element's font</div>
+	<p>
+		<span class="f24">对齐方式</span>
+		<span class="f36 texttop">text-top</span>
+		对齐
+		<img class="i_texttop" src="../static/images/mclaren.png">
+		<span class="f36 textbottom">text-bottom</span>
+		方式
+		<img class="i_textbottom" src="../static/images/mclaren.png">
+	</p>
+
+	<div>行内替换元素中点对准基线上方0.5ex的线，通常1ex约等于1em，即对齐基线上方4分之1em处</div>
+	<p>
+		<span class="f24" style="line-height: normal;">对齐方式middle x</span>
+		<img class="i_middle" src="../static/images/mclaren.png">
+		<span class="f24" style="line-height: normal;">middle x</span>
+		<img class="i_middle" src="../static/images/mclaren.png" width="15px" height="15px">
+	</p>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
