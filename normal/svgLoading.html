@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<title>loading</title>
+	<style>
+		body {
+			background-color: #999;
+		}
+		/*
+		  线
+		*/
+		.svg_line {
+			width: 200px;
+			height: 100px;
+		}
+		.svg_line path {
+			fill: none;
+			stroke: #f10582;
+			stroke-width: 2;
+			stroke-linecap: round;
+			stroke-dasharray: 100;
+			stroke-dashoffset: 100;
+			animation: animate_svg_line 1s linear infinite;
+
+		}
+		@keyframes animate_svg_line {
+			to {
+				stroke-dashoffset: 0;
+			}
+		}
+
+		/*
+		  圆
+		*/
+		.svg_circle {
+			margin-right: 20px;
+			width: 64px;
+			height: 64px;
+		}
+		.svg_circle circle:first-child {
+			stroke: #fff;
+		}
+		.svg_circle circle:last-child {
+			stroke: #f10582;
+			stroke-dasharray: 460;
+			stroke-dashoffset: 460;
+			transform-origin: 50% 50%;
+			animation: animate_svg_circle1 2s linear infinite;
+		}
+		.svg_circle.rotate circle:last-child {
+			animation: animate_svg_circle2 2s linear infinite;
+		}
+		@keyframes animate_svg_circle1 {
+			to {
+				stroke-dashoffset: -460;
+			}
+		}
+		@keyframes animate_svg_circle2 {
+			to {
+				stroke-dashoffset: -460;
+				transform: rotate(720deg);
+			}
+		}
+	</style>
+	<style>
+		/*
+		  唯品会loading vip
+		*/
+		.svg_font {
+			width: 64px;
+			height: 64px;
+			fill: none;
+			stroke: #f10582;
+			stroke-width: 5;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+		}
+		.svg_font .vip_white {
+			stroke: #d9d9d9;
+			animation: animate_svg_back 3.6s infinite;
+		}
+		.svg_font .vip_pink_v {
+			stroke-dasharray: 500;
+			stroke-dashoffset: 500;
+			animation: animate_svg_font 3.6s infinite;
+		}
+		.svg_font .vip_pink_dot {
+			stroke-dasharray: 500;
+			stroke-dashoffset: 500;
+			animation: animate_svg_font 3.6s 0.5s infinite;
+		}
+		.svg_font .vip_pink_i {
+			stroke-dasharray: 500;
+			stroke-dashoffset: 500;
+			animation: animate_svg_font 3.6s 0.6s infinite;
+		}
+		.svg_font .vip_pink_p {
+			stroke-dasharray: 500;
+			stroke-dashoffset: 500;
+			animation: animate_svg_font 3.6s 0.75s infinite;
+		}
+		@keyframes animate_svg_back {
+			0 {
+				stroke:#d9d9d9
+			}
+			49% {
+				stroke:#d9d9d9
+			}
+			50% {
+				stroke:#f10582
+			}
+			99% {
+				stroke:#f10582
+			}
+			100% {
+				stroke:#d9d9d9
+			}
+		}
+		@keyframes animate_svg_font {
+			0%{
+				stroke:#f10582;
+				stroke-dashoffset:500
+			}
+			50%{
+				stroke:#f10582;
+				stroke-dashoffset:300
+			}
+			51%{
+				stroke:#d9d9d9;
+				stroke-dashoffset:500
+			}
+			100%{
+				stroke:#d9d9d9;
+				stroke-dashoffset:300
+			}
+		}
+	</style>
+	<style>
+		.jdc_loading {
+			width: 64px;
+			height: 64px;
+		}
+		.circle {
+			stroke-width: 6px;
+			fill: none;
+		}
+		circle:first-child {
+			stroke: #fff;
+		}
+		circle:last-child {
+			stroke: #e4393c;
+			stroke-dasharray: 460;
+			stroke-dashoffset: 460;
+			transform-origin: center center;
+			animation: rotate 2.5s linear infinite;
+		}
+		@keyframes rotate {
+			to {
+				stroke-dashoffset: -460;
+				transform: rotate(360deg);
+			}
+		}
+		.background, .stream {
+			fill: none;
+			stroke-width: 5;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+		}
+		.background {
+			stroke: #fff;
+			animation: jdc_background 5s infinite;
+		}
+		.stream {
+			stroke: #e4393c;
+			stroke-dasharray: 500;
+			stroke-dashoffset: 500;
+		}
+		.stream .dot {
+			animation: jdc_stream 5s infinite;
+		}
+		.stream .j {
+			animation: jdc_stream 5s 0.3s infinite;
+		}
+		.stream .d {
+			animation: jdc_stream 5s 0.9s infinite;
+		}
+		.stream .c {
+			animation: jdc_stream 5s 1.8s infinite;
+		}
+		@keyframes jdc_stream {
+			0% {
+				stroke: #e4393c;
+				stroke-dashoffset: 500;
+			}
+			50% {
+				stroke: #e4393c;
+				stroke-dashoffset: 300;
+			}
+			51% {
+				stroke: #fff;
+				stroke-dashoffset: 500;
+			}
+			100% {
+				stroke: #fff;
+				stroke-dashoffset: 300;
+			}
+		}
+		@keyframes jdc_background {
+			0 {
+				stroke: #fff;
+			}
+			50% {
+				stroke: #fff;
+			}
+			51% {
+				stroke: #e4393c;
+			}
+			100% {
+				stroke: #e4393c;
+			}
+		}
+		/*.stream .dot {
+			animation: jdc_stream 2.5s infinite;
+		}
+		.stream .j {
+			animation: jdc_stream 2.5s 0.3s infinite;
+		}
+		.stream .d {
+			animation: jdc_stream 2.5s 0.9s infinite;
+		}
+		.stream .c {
+			animation: jdc_stream 2.5s 1.8s infinite;
+		}
+		@keyframes jdc_stream {
+			to {
+				stroke-dashoffset: 300;
+			}
+		}*/
+	</style>
+</head>
+<body>
+
+	<svg class="jdc_loading" viewBox="0 0 150 150">
+		<g class="circle">
+			<circle cx="75" cy="75" r="72"></circle>
+			<circle cx="75" cy="75" r="72"></circle>
+		</g>
+		<g class="background">
+			<path d="M41 49 A0.1 0.1, 0 1 1, 44 52 A0.1 0.1, 0 1 1, 41 49 Z M38 62 L45 62 L45 100 A5 5, 0 0 1, 30 100 M85 80 A13 17, 0 1 0, 85 84 L85 49 L85 100 M124 68 A16 18, 0 1 0, 124 98"></path>
+		</g>
+		<g class="stream">
+			<path class="dot" d="M41 49 A0.1 0.1, 0 1 1, 44 52 A0.1 0.1, 0 1 1, 41 49 Z"></path>
+			<path class="j" d="M38 62 L45 62 L45 100 A5 5, 0 0 1, 30 100"></path>
+			<path class="d" d="M85 80 A13 17, 0 1 0, 85 84 L85 49 L85 100"></path>
+			<path class="c" d="M124 68 A16 18, 0 1 0, 124 98"></path>
+		</g>
+	</svg>
+	
+
+	<br />
+
+	<svg class="svg_line" viewBox="0 0 100 50">
+		<path d="M10 25 L90 25 "></path>
+	</svg>
+
+	<br />
+
+	<svg class="svg_circle" viewBox="0 0 150 150">
+		<g stroke-width="6" fill="none">
+			<circle cx="75" cy="75" r="72"></circle>
+			<circle cx="75" cy="75" r="72"></circle>
+		</g>
+	</svg>
+
+	<svg class="svg_circle rotate" viewBox="0 0 150 150">
+		<g stroke-width="6" fill="none">
+			<circle cx="75" cy="75" r="72"></circle>
+			<circle cx="75" cy="75" r="72"></circle>
+		</g>
+	</svg>
+
+	<br />
+
+	<svg class="svg_font" viewBox="0 0 150 150">
+		<path class="vip_white" d="M32 62 L47 100 L62 62 M77 49 A0.1 0.1, 0 1 1, 80 52 A0.1 0.1, 0 1 1, 77 49 Z M78 62 L78 100 M95 113 L95 62 L95 85 A15 15, 0 1 1, 130 78 A15 15, 0 1 1,95 85 Z"></path>
+		<path class="vip_pink_v" d="M32 62 L47 100 L62 62"></path>
+		<path class="vip_pink_dot" d="M77 49 A0.1 0.1, 0 1 1, 80 52 A0.1 0.1, 0 1 1, 77 49"></path>
+		<path class="vip_pink_i" d="M78 62 L78 100"></path>
+		<path class="vip_pink_p" d="M95 113 L95 62 L95 85 A15 15, 0 1 1, 130 78 A15 15, 0 1 1,95 85"></path>
+	</svg>
+
+</body>
+</html>
