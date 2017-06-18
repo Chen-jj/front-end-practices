@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>前端路由</title>
+	<style>
+		body {
+			font-size: 60px;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="index" style="background-color: grey;">
+		<ul>
+			<li><a href="#/red">turn red</a></li>
+			<li><a href="#/yellow">turn yellow</a></li>
+			<li><a href="#/blue">turn blue</a></li>
+		</ul>
+	</div>
+
+	<div id="red" style="background-color: red; display:none;">
+		<ul>
+			<li><a href="#">turn index</a></li>
+			<li><a href="#/yellow">turn yellow</a></li>
+			<li><a href="#/blue">turn blue</a></li>
+		</ul>
+	</div>
+
+	<div id="yellow" style="background-color: yellow; display:none;">
+		<ul>
+			<li><a href="#">turn index</a></li>
+			<li><a href="#/red">turn red</a></li>
+			<li><a href="#/blue">turn blue</a></li>
+		</ul>
+	</div>
+
+	<div id="blue" style="background-color: blue; display:none;">
+		<ul>
+			<li><a href="#">turn index</a></li>
+			<li><a href="#/red">turn red</a></li>
+			<li><a href="#/yellow">turn yellow</a></li>
+		</ul>
+	</div>
+
+
+	<script>
+		function Router() {
+			this.routes = {};
+			this.currentRoute = '/';
+			this.init();
+		}
+		Router.prototype.init = function() {
+			window.addEventListener('load', this.dispatch.bind(this));
+			window.addEventListener('hashchange', this.dispatch.bind(this));
+		}
+		Router.prototype.dispatch = function() {
+			var url = location.hash.split('#/')[1] || '/';
+
+			if (typeof this.routes[url] == 'function') {
+
+				var cur = this.currentRoute == '/' ? document.querySelector('#index') : document.querySelector('#' + this.currentRoute),
+					tar = url == '/' ? document.querySelector('#index') : document.querySelector('#' + url);
+
+				cur.style.display = 'none';
+				tar.style.display = 'block';
+
+				this.currentRoute = url;
+
+				this.routes[url]();
+			}
+		}
+		Router.prototype.route = function(url, cb) {
+			this.routes[url] = cb || function() {};
+		}
+
+		var router = new Router();
+
+		router.route('/', function() {})
+		router.route('red')
+		router.route('yellow')
+		router.route('blue')
+
+
+
+	</script>
+
+</body>
+</html>
